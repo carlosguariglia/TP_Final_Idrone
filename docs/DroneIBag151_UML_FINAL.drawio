@@ -1,0 +1,154 @@
+<mxfile host="app.diagrams.net" modified="2025-11-12T00:00:00.000Z" agent="Draw.io" version="24.0.0">
+  <diagram name="Clean Architecture - Drone IBag151" id="drone-clean-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Título -->
+        <mxCell id="title" value="Sistema de Control de Drones - DroneIBag151&#xa;Clean Architecture (C++17)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="20" width="450" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Leyenda de capas -->
+        <mxCell id="layer-presentation" value="PRESENTATION LAYER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E1F5FE;strokeColor=#01579B;fontStyle=1;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="1000" height="140" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="layer-application" value="APPLICATION LAYER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#4A148C;fontStyle=1;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="1000" height="140" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="layer-domain" value="DOMAIN LAYER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontStyle=1;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="400" width="1000" height="180" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="layer-infrastructure" value="INFRASTRUCTURE LAYER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#1B5E20;fontStyle=1;fontSize=12;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="80" y="600" width="1000" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- PRESENTATION LAYER: ConsoleUI -->
+        <mxCell id="consoleui" value="&lt;&lt;presentation&gt;&gt;&#xa;ConsoleUI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#B3E5FC;strokeColor=#01579B;" vertex="1" parent="1">
+          <mxGeometry x="400" y="110" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="consoleui-attr" value="- controller_: DroneController*" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="consoleui">
+          <mxGeometry y="40" width="280" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="consoleui-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="consoleui">
+          <mxGeometry y="66" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="consoleui-methods" value="+ run(): void&#xa;- displayMenu(): void&#xa;- processCommand(input: string): void&#xa;- parseInput(input: string): vector&lt;string&gt;&#xa;- toLowerCase(str: string): string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" vertex="1" parent="consoleui">
+          <mxGeometry y="74" width="280" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- APPLICATION LAYER: DroneController -->
+        <mxCell id="dronecontroller" value="&lt;&lt;application&gt;&gt;&#xa;DroneController" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#E1BEE7;strokeColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="400" y="270" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dronecontroller-attr" value="- drone_: Drone*" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="dronecontroller">
+          <mxGeometry y="40" width="280" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="dronecontroller-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="dronecontroller">
+          <mxGeometry y="66" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="dronecontroller-methods" value="+ takeOff(), land(), elevate(m), descend(m)&#xa;+ turnRight(d), turnLeft(d), accelerate(s)&#xa;+ brake(), releasePackage(), takePhoto()&#xa;+ notifyDelivery(), showStatus()&#xa;- printSuccess(op), printError(op, reason)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=9;" vertex="1" parent="dronecontroller">
+          <mxGeometry y="74" width="280" height="16" as="geometry" />
+        </mxCell>
+
+        <!-- DOMAIN LAYER: Drone -->
+        <mxCell id="drone" value="&lt;&lt;domain&gt;&gt;&#xa;Drone" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#FFE0B2;strokeColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="400" y="430" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="drone-attr" value="- api_: IDroneAPI*&#xa;- altitude_: double&#xa;- speed_: double&#xa;- flying_: bool&#xa;- hasPackageLoaded_: bool&#xa;- batteryLevel_: double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="drone">
+          <mxGeometry y="40" width="280" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="drone-line" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="drone">
+          <mxGeometry y="116" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="drone-methods" value="+ 11 operaciones (igual que DroneController)&#xa;+ getAltitude(), getSpeed(), isFlying()&#xa;+ hasPackage(), getBatteryLevel()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=10;" vertex="1" parent="drone">
+          <mxGeometry y="124" width="280" height="6" as="geometry" />
+        </mxCell>
+
+        <!-- INFRASTRUCTURE LAYER: IDroneAPI (Interface) -->
+        <mxCell id="idroneapi" value="&lt;&lt;interface&gt;&gt;&#xa;IDroneAPI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#C8E6C9;strokeColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="280" y="630" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="idroneapi-methods" value="+ sendTakeOff(): bool&#xa;+ sendLand(): bool&#xa;+ sendElevate(meters: double): bool&#xa;+ sendDescend(meters: double): bool&#xa;+ sendTurnRight(degrees: double): bool&#xa;+ sendTurnLeft(degrees: double): bool&#xa;+ sendAccelerate(speed: double): bool&#xa;+ sendBrake(): bool&#xa;+ sendReleasePackage(): bool&#xa;+ sendTakePhoto(): bool&#xa;+ sendNotifyDelivery(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=9;" vertex="1" parent="idroneapi">
+          <mxGeometry y="40" width="250" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- INFRASTRUCTURE LAYER: MockDroneAPI -->
+        <mxCell id="mockapi" value="&lt;&lt;infrastructure&gt;&gt;&#xa;MockDroneAPI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#C8E6C9;strokeColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="620" y="630" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="mockapi-methods" value="+ sendTakeOff(): bool {return true;}&#xa;+ sendLand(): bool {return true;}&#xa;+ sendElevate(meters): bool {return true;}&#xa;+ sendDescend(meters): bool {return true;}&#xa;+ sendTurnRight(degrees): bool {return true;}&#xa;+ sendTurnLeft(degrees): bool {return true;}&#xa;+ sendAccelerate(speed): bool {return true;}&#xa;+ sendBrake(): bool {return true;}&#xa;+ sendReleasePackage(): bool {return true;}&#xa;+ sendTakePhoto(): bool {return true;}&#xa;+ sendNotifyDelivery(): bool {return true;}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=8;" vertex="1" parent="mockapi">
+          <mxGeometry y="40" width="280" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Relaciones -->
+        <!-- ConsoleUI -> DroneController -->
+        <mxCell id="rel1" value="usa" style="endArrow=open;endFill=0;endSize=12;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;dashed=1;" edge="1" parent="1" source="consoleui" target="dronecontroller">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="540" y="210" as="sourcePoint" />
+            <mxPoint x="540" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- DroneController -> Drone -->
+        <mxCell id="rel2" value="orquesta" style="endArrow=open;endFill=0;endSize=12;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;dashed=1;" edge="1" parent="1" source="dronecontroller" target="drone">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="540" y="370" as="sourcePoint" />
+            <mxPoint x="540" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Drone -> IDroneAPI -->
+        <mxCell id="rel3" value="depende de" style="endArrow=open;endFill=0;endSize=12;html=1;exitX=0.25;exitY=1;entryX=0.5;entryY=0;dashed=1;" edge="1" parent="1" source="drone" target="idroneapi">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="470" y="560" as="sourcePoint" />
+            <mxPoint x="405" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- MockDroneAPI implements IDroneAPI -->
+        <mxCell id="rel4" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="mockapi" target="idroneapi">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="620" y="695" as="sourcePoint" />
+            <mxPoint x="530" y="695" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4-label" value="&lt;&lt;implements&gt;&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="rel4">
+          <mxGeometry x="-0.1" y="-1" relative="1" as="geometry">
+            <mxPoint x="5" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Notas GRASP -->
+        <mxCell id="note-grasp" value="&lt;b&gt;GRASP Patterns:&lt;/b&gt;&#xa;• Controller (DroneController)&#xa;• Information Expert (Drone)&#xa;• Low Coupling (capas separadas)&#xa;• High Cohesion (responsabilidades claras)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FFF9C4;strokeColor=#F57F17;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="110" width="260" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Notas SOLID -->
+        <mxCell id="note-solid" value="&lt;b&gt;SOLID Principles:&lt;/b&gt;&#xa;• SRP: Cada clase una responsabilidad&#xa;• DIP: Drone depende de IDroneAPI (abstracción)&#xa;• OCP: Extensible con nuevas APIs&#xa;• ISP: IDroneAPI específica para drones" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#E1F5FE;strokeColor=#01579B;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="230" width="260" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Notas Validaciones -->
+        <mxCell id="note-validations" value="&lt;b&gt;Validaciones en Drone:&lt;/b&gt;&#xa;• Estado: flying, speed, altitude&#xa;• Altitud mín. volando: 1.0m&#xa;• Grados: 0-360&#xa;• Velocidad: permite negativos&#xa;• Paquete: requiere speed=0" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#FFE0B2;strokeColor=#E65100;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="350" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Notas Tecnología -->
+        <mxCell id="note-tech" value="&lt;b&gt;Stack Técnico:&lt;/b&gt;&#xa;• Lenguaje: C++17&#xa;• Build: CMake 3.14+&#xa;• STL: string, vector, memory&#xa;• Comandos: texto bilingüe (ES/EN)&#xa;• Sin dependencias externas" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#C8E6C9;strokeColor=#1B5E20;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="480" width="260" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Leyenda -->
+        <mxCell id="legend" value="&lt;b&gt;Leyenda:&lt;/b&gt;&#xa;───── Dependencia (usa)&#xa;- - - - - Implementación" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#F5F5F5;strokeColor=#9E9E9E;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="660" width="150" height="80" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
